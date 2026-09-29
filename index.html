@@ -238,6 +238,38 @@ table.rt tbody th{position:sticky;left:0;z-index:1;box-shadow:1px 0 0 var(--line
   .card.hit{box-shadow:none}
   table.rt .rb{color:#333}
 }
+
+/* ===== W4-2（2026-09-29）三人一組、記錄者觀察 ===== */
+.names{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:8px 0 12px}
+.names label{display:block}
+.names span{display:block;font-size:.82rem;font-weight:700;color:var(--mute);margin:0 0 2px}
+.nin{display:block;width:100%;font:inherit;color:var(--ink);background:var(--paste);border:1px solid var(--paste-line);
+  border-radius:10px;padding:8px 12px}
+.nin:focus{outline:2px solid var(--acc);outline-offset:1px;background:var(--paper)}
+.nin::placeholder{color:var(--mute);opacity:.65}
+table.rot{min-width:460px}
+table.rot tbody th{background:var(--zebra);color:var(--title);text-align:left;white-space:nowrap}
+table.rot td{text-align:center}
+table.rot td.mine{font-weight:700}
+table.rot td.me{background:var(--acc-soft);color:var(--acc);font-weight:900;box-shadow:inset 0 0 0 2px var(--acc)}
+.pick{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:14px 0 6px}
+.pick .pl2{font-weight:700;color:var(--title);font-size:.92rem}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--paper)}
+.seg button{border:0;background:none;padding:6px 16px;font-size:.92rem;color:var(--mute);border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--acc);color:var(--paper);font-weight:700}
+.myrole{background:var(--acc-soft);border-radius:10px;padding:8px 14px;margin:8px 0 12px;color:var(--goal);max-width:none;font-weight:700}
+.cards.roles .card .ct{font-size:1.15rem}
+table.cntt{min-width:520px}
+table.cntt tbody th{background:var(--zebra);color:var(--title);text-align:left;white-space:nowrap}
+table.cntt td.cc{text-align:center;white-space:nowrap;width:150px}
+.cnt{display:inline-flex;align-items:center;gap:8px}
+.cnt button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--paper);
+  font-size:1.15rem;font-weight:700;line-height:1;color:var(--ink)}
+.cnt button:active{background:var(--acc-soft)}
+.cnt output{min-width:2ch;text-align:center;font-weight:900;font-size:1.2rem;color:var(--title)}
+#logdraw{margin:0 0 0 10px}
+@media print{.pick,.cnt button,#logdraw{display:none!important}}
 </style>
 </head>
 <body>
@@ -245,20 +277,17 @@ table.rt tbody th{position:sticky;left:0;z-index:1;box-shadow:1px 0 0 var(--line
 <span class="sp"></span><a class="lk" href="prep.html">🗓 訪談的準備</a><a class="lk" href="w04-sheet.docx" download>⬇ 紙本 Word 版</a><button type="button" id="theme" aria-label="切換深淺色">◐</button>
 <button type="button" id="print">列印</button></div></div>
 <div class="wrap">
-  <aside class="side"><details class="tocbox"><summary>目錄</summary><ol class="toc"><li class="t1"><a href="#s1">零、我這一輪的角色</a></li><li class="t1"><a href="#s2">一、訪談前：我準備好了嗎</a></li><li class="t1"><a href="#s3">二、我當受訪者：那張說書人卡</a></li><li class="t1"><a href="#s4">三、我當訪談者：大綱與追問</a></li><li class="t1"><a href="#s5">四、狀況卡：我怎麼接</a></li><li class="t1"><a href="#s6">五、六個階段的重點與評量</a></li><li class="t2"><a href="#s7">（一）抵達</a></li><li class="t2"><a href="#s8">（二）介紹研究</a></li><li class="t2"><a href="#s9">（三）開始訪談</a></li><li class="t2"><a href="#s10">（四）訪談進行過程中</a></li><li class="t2"><a href="#s11">（五）結束訪談</a></li><li class="t2"><a href="#s12">（六）訪談之後</a></li><li class="t1"><a href="#s13">六、訪談結束當天（原件三、）</a></li><li class="t1"><a href="#s14">七、接到 W11 的個人作業</a></li><li class="t1"><a href="#s15">八、怎麼寫訪談大綱（最多 10 題）</a></li><li class="t2"><a href="#s16">四個最常見的毛病</a></li><li class="t2"><a href="#s17">我的訪談大綱草稿</a></li></ol></details></aside>
+  <aside class="side"><details class="tocbox"><summary>目錄</summary><ol class="toc"><li class="t1"><a href="#s1">零、三人一組，三輪輪替</a></li><li class="t1"><a href="#s2">一、訪談前：我準備好了嗎</a></li><li class="t1"><a href="#s3">二、我當受訪者：那張說書人卡</a></li><li class="t1"><a href="#s4">三、我當訪談者：大綱與追問</a></li><li class="t1"><a href="#s18">四、我當記錄者的觀察與抽卡</a></li><li class="t2"><a href="#s19">（一）數一數，五種行為</a></li><li class="t2"><a href="#s20">（二）觀察紀錄表</a></li><li class="t2"><a href="#s21">（三）抽卡的時機與紀錄</a></li><li class="t2"><a href="#s22">（四）訪談後的回饋</a></li><li class="t1"><a href="#s5">五、狀況卡的抽法與接法</a></li><li class="t1"><a href="#s6">六、六個階段的重點與評量</a></li><li class="t2"><a href="#s7">（一）抵達</a></li><li class="t2"><a href="#s8">（二）介紹研究</a></li><li class="t2"><a href="#s9">（三）開始訪談</a></li><li class="t2"><a href="#s10">（四）訪談進行過程中</a></li><li class="t2"><a href="#s11">（五）結束訪談</a></li><li class="t2"><a href="#s12">（六）訪談之後</a></li><li class="t1"><a href="#s13">七、訪談結束當天（原件三、）</a></li><li class="t1"><a href="#s14">八、接到 W11 的個人作業</a></li><li class="t1"><a href="#s15">九、怎麼寫訪談大綱（最多 10 題）</a></li><li class="t2"><a href="#s16">四個最常見的毛病</a></li><li class="t2"><a href="#s17">我的訪談大綱草稿</a></li></ol></details></aside>
   <main class="doc">
     <header class="dh"><span class="eyebrow">115-1 教育與社會科學研究法｜第 4 週（9/29）｜學生用</span><h1>W4 課堂訪談練習｜學習單</h1><p class="subl">115-1 教育與社會科學研究法｜第 4 週（9/29）　田野實察與訪談之準備</p><p class="subl">每個填寫框都會隨你打的字自動長高，不必擔心寫不下；表格可以按「＋ 再加一列」。</p></header>
 <div class="saver"><span class="sdot"></span><span id="sstat">填寫內容只存在你自己的瀏覽器，不會上傳，老師看不到。</span><button type="button" id="clearall">清除本頁填寫</button></div>
-<h2 id="s1" class="h1">零、我這一輪的角色</h2>
-<p class="fh">組員與角色輪換<span class="fhint">四人一組，共三輪；角色為訪談者、受訪者、記錄者 A、記錄者 B</span></p><div class="rep" data-k="rep1" data-cols="4" data-start="4"><div class="tw"><table class="rtb"><thead><tr><th scope="col">姓名</th><th scope="col">第一輪</th><th scope="col">第二輪</th><th scope="col">第三輪</th><th class="rmh"></th></tr></thead><tbody></tbody></table></div><button type="button" class="addr">＋ 再加一列</button></div>
-<div class="fld"><p class="fh">我這一組坐在教室的哪個位置</p><textarea class="fin" data-k="f1" rows="1" placeholder="在這裡寫…"></textarea></div>
-<p class="note">每輪訪談 5–8 分鐘，三輪跑完才進大場討論。每一輪換人當訪談者，新的受訪者要重新挑一張說書人卡。</p>
+<h2 id="s1" class="h1">零、三人一組，三輪輪替</h2><p>每組三人，共跑三輪。三輪下來，每個人都當過一次訪談者、一次受訪者、一次記錄者。</p><p class="fh">組員<span class="fhint">先填三個名字，下方輪替表會自動代入</span></p><div class="names"><label><span>組員 A</span><input class="nin" type="text" data-k="n_a" placeholder="名字" autocomplete="off"></label><label><span>組員 B</span><input class="nin" type="text" data-k="n_b" placeholder="名字" autocomplete="off"></label><label><span>組員 C</span><input class="nin" type="text" data-k="n_c" placeholder="名字" autocomplete="off"></label></div><div class="tw"><table class="rot" id="rot"><thead><tr><th scope="col">輪次</th><th scope="col">訪談者</th><th scope="col">受訪者</th><th scope="col">記錄者</th></tr></thead><tbody><tr data-r="1"><th scope="row">第一輪</th><td data-p="a"></td><td data-p="b"></td><td data-p="c"></td></tr><tr data-r="2"><th scope="row">第二輪</th><td data-p="b"></td><td data-p="c"></td><td data-p="a"></td></tr><tr data-r="3"><th scope="row">第三輪</th><td data-p="c"></td><td data-p="a"></td><td data-p="b"></td></tr></tbody></table></div><div class="pick"><span class="pl2">我是</span><div class="seg" data-k="me" role="group" aria-label="我是哪一位組員"><button type="button" data-v="a">A</button><button type="button" data-v="b">B</button><button type="button" data-v="c">C</button></div><span class="pl2">現在是</span><div class="seg" data-k="rnd" role="group" aria-label="現在第幾輪"><button type="button" data-v="1">第一輪</button><button type="button" data-v="2">第二輪</button><button type="button" data-v="3">第三輪</button></div></div><p class="myrole" id="myrole" aria-live="polite"></p><ul class="cards roles"><li class="card" data-role="訪談者" style="--c:#2F6DB5"><p class="ct">訪談者</p><p class="cn">問與追問</p><p class="cl">這一輪要做</p><ul><li>照第三節的大綱進行，依六個階段從開場走到結尾。</li><li>每個核心題至少追問一次，向對方要例子或要過程。</li><li>遇到突發狀況現場處理，紙上只記關鍵字。</li></ul></li><li class="card" data-role="受訪者" style="--c:#B26D08"><p class="ct">受訪者</p><p class="cn">說自己的經驗</p><p class="cl">這一輪要做</p><ul><li>先挑一張說書人卡，開場前不說原因。</li><li>回答用自己的真實經驗，不編故事。</li><li>記錄者亮出狀況卡時，從下一個回答開始演出那個狀況。</li></ul></li><li class="card" data-role="記錄者" style="--c:#7048B0"><p class="ct">記錄者</p><p class="cn">看、記、抽卡</p><p class="cl">這一輪要做</p><ul><li>不插話，也不替訪談者提示題目。</li><li>依第四節填觀察紀錄，並數五種行為的次數。</li><li>在適當時機抽狀況卡，悄悄亮給受訪者看。</li></ul></li></ul><p class="fh">每一輪的流程<span class="fhint">時間為建議，可依課堂調整</span></p><ol class="lst"><li>準備約 1 分鐘，受訪者挑卡，記錄者備好觀察紀錄表。</li><li>訪談 5–8 分鐘。</li><li>回饋約 2 分鐘，記錄者先說，受訪者再說。</li><li>換角，進入下一輪。</li></ol><div class="fld"><p class="fh">我這一組坐在教室的哪個位置</p><textarea class="fin" data-k="f1" rows="1" placeholder="在這裡寫…"></textarea></div><p class="note">三輪跑完才進大場討論。每一輪換人當訪談者，新的受訪者要重新挑一張說書人卡。</p>
 <h2 id="s2" class="h1">一、訪談前：我準備好了嗎</h2>
-<div class="fld chk"><p class="fh">上課練習用的簡化版：</p><ul class="cl"><li><label><input type="checkbox" data-k="c2"><span>訪談約定<i>事先詢問接受訪談的意願、確定訪談時間及地點。</i></span></label></li><li><label><input type="checkbox" data-k="c3"><span>攜帶訪談工具<i>訪談問題清單、紙、筆和錄音機；需檢查參考資料是否齊備。</i></span></label></li><li><label><input type="checkbox" data-k="c4"><span>我知道自己這輪是哪個角色，也知道要記什麼</span></label></li><li><label><input type="checkbox" data-k="c5"><span>我看過六個階段的重點（第五節）</span></label></li></ul></div>
+<div class="fld chk"><p class="fh">上課練習用的簡化版：</p><ul class="cl"><li><label><input type="checkbox" data-k="c2"><span>訪談約定<i>事先詢問接受訪談的意願、確定訪談時間及地點。</i></span></label></li><li><label><input type="checkbox" data-k="c3"><span>攜帶訪談工具<i>訪談問題清單、紙、筆和錄音機；需檢查參考資料是否齊備。</i></span></label></li><li><label><input type="checkbox" data-k="c4"><span>我知道自己這輪是哪個角色，也知道要記什麼</span></label></li><li><label><input type="checkbox" data-k="c5"><span>我看過六個階段的重點（第六節）</span></label></li></ul></div>
 <p class="pl">正式訪談的完整準備——邀請信、確認信、時間配置、地點原則、裝備清單、開場口頭說明——見 <a class="inl" href="prep.html">《115-1 訪談的準備》</a>。那一份填一次就會自動代入三封信，W11 前要交的那次訪談會用到。</p>
 <p class="note">本堂練習不必簽同意書、不必錄音；正式訪談時這兩項都是必要的。</p>
 <h2 id="s3" class="h1">二、我當受訪者：那張說書人卡</h2>
-<p>輪到你當受訪者時，先從說書人卡（Dixit）裡挑一張代表「學習壓力」的卡。先不要說原因——那是訪談者的第 1 題。</p>
+<p>輪到你當受訪者時，先從說書人卡（Dixit）裡挑一張代表「學習壓力」的卡。先不要說原因——那是訪談者的第 1 題。</p><p>記錄者可能在訪談中亮一張狀況卡給你看（第五節）。看到之後，從下一個回答開始演出那個狀況，內容仍用你自己的真實經驗。</p>
 <div class="fld"><p class="fh">我挑的卡是哪一張（描述卡面），以及為什麼它代表「學習壓力」<span class="fhint">先寫在這裡，訪談時看訪談者問不問得出來</span></p><textarea class="fin" data-k="f6" rows="3" placeholder="在這裡寫…"></textarea></div>
 <div class="fld"><p class="fh">訪談結束後回頭看：訪談者有沒有問出我原本想講、但沒講出來的事？是哪一件？<span class="fhint">這一格在訪談之後才填</span></p><textarea class="fin" data-k="f7" rows="3" placeholder="在這裡寫…"></textarea></div>
 <h2 id="s4" class="h1">三、我當訪談者：大綱與追問</h2>
@@ -266,10 +295,9 @@ table.rt tbody th{position:sticky;left:0;z-index:1;box-shadow:1px 0 0 var(--line
 <ul class="lst"><li class="lv1"><b>（1）</b><span class="">請問是什麼原因讓你挑選這張圖片作為代表？請問你在學習過程中，感受過什麼樣壓力？為什麼會產生這樣的壓力？</span></li><li class="lv1"><b>（2）</b><span class="">請說明一下當時面對壓力的過程？</span></li><li class="lv1"><b>（3）</b><span class="">當下你對於這樣學習壓力有什麼感受？</span></li><li class="lv1"><b>（4）</b><span class="">最後有試圖解決壓力背後的問題嗎？解決（或未解決）的關鍵因素是？</span></li><li class="lv1"><b>（5）</b><span class="">你認為這次學習的壓力對於你未來有什麼影響？</span></li></ul>
 <p class="fh">我實際問出口的追問<span class="fhint">一列一個追問；練習中先記關鍵字，三輪結束再補完</span></p><div class="rep" data-k="rep2" data-cols="4" data-start="4"><div class="tw"><table class="rtb"><thead><tr><th scope="col">第幾輪</th><th scope="col">對應第幾題</th><th scope="col">我問了什麼</th><th scope="col">受訪者的反應（多講了還是收起來）</th><th class="rmh"></th></tr></thead><tbody></tbody></table></div><button type="button" class="addr">＋ 再加一列</button></div>
 <div class="fld"><p class="fh">哪一個追問讓受訪者講出你原本問不到的東西？你當時是怎麼問的（請寫原話）<span class="fhint">寫原話，不要寫「我追問了他的感受」</span></p><textarea class="fin" data-k="f8" rows="3" placeholder="在這裡寫…"></textarea></div>
-<h2 id="s5" class="h1">四、狀況卡：我怎麼接</h2>
-<p class="fh">記錄者在適當時機抽一張給訪談者；線上抽卡：</p><div class="cardwrap"><button type="button" id="draw" class="drawb">🎲 抽一張狀況卡</button><span class="drawout" id="drawout"></span><ul class="cards"><li class="card" data-i="0" style="--c:#B26D08"><p class="cno">①</p><p class="ct">受訪者答非所問</p><p class="cn">需拉回主題</p><p class="cl">可以怎麼接</p><ul><li>先承接再轉：「這點很有意思，我想先回到剛才那個……」</li><li>把問題縮小到一個具體場景：「那次考試前的那個晚上，你在做什麼？」</li><li>不要直接說「這不是我問的」——受訪者會開始猜你要什麼答案。</li></ul><label class="cdone"><input type="checkbox" data-k="k9"><span>我這輪接到這張</span></label></li><li class="card" data-i="1" style="--c:#2F6DB5"><p class="cno">②</p><p class="ct">受訪者回答過於簡略</p><p class="cn">需追問</p><p class="cl">可以怎麼接</p><ul><li>要例子不要定義：「可以講一次實際發生的嗎？」</li><li>要過程不要結論：「那後來呢？」「當下你做了什麼？」</li><li>沉默三秒也是追問——先不要急著換下一題。</li></ul><label class="cdone"><input type="checkbox" data-k="k10"><span>我這輪接到這張</span></label></li><li class="card" data-i="2" style="--c:#7048B0"><p class="cno">③</p><p class="ct">受訪者說個不停、欲罷不能</p><p class="cn">需巧妙結束引導入下一題</p><p class="cl">可以怎麼接</p><ul><li>抓一個他自己說過的詞當橋：「你剛提到『撐過去』，我想多問這個——」</li><li>用時間提示收束：「這部分我先記下來，我們時間還剩一半，我想確認另一件事。」</li><li>先摘要再轉題：摘要讓受訪者覺得被聽見，比硬轉題不傷關係。</li></ul><label class="cdone"><input type="checkbox" data-k="k11"><span>我這輪接到這張</span></label></li></ul></div>
-<p class="fh">我接到的狀況與處理<span class="fhint">沒處理好也照實寫——失敗的紀錄才看得出下次要改什麼</span></p><div class="rep" data-k="rep3" data-cols="4" data-start="3"><div class="tw"><table class="rtb"><thead><tr><th scope="col">第幾輪</th><th scope="col">抽到哪一張</th><th scope="col">我當下說了什麼</th><th scope="col">有效嗎？下次會怎麼改</th><th class="rmh"></th></tr></thead><tbody></tbody></table></div><button type="button" class="addr">＋ 再加一列</button></div>
-<h2 id="s6" class="h1">五、六個階段的重點與評量</h2>
+<h2 id="s18" class="h1">四、我當記錄者的觀察與抽卡</h2><p>記錄者不插話，也不替訪談者提示。任務有三件。第一，把訪談的過程記成資料。第二，在適當的時機抽狀況卡，悄悄亮給受訪者看。第三，訪談結束後用紀錄回饋，先講看到的事實，再講自己的推測。</p><h3 id="s19" class="h2">（一）數一數，訪談者的五種行為</h3><p>訪談進行時，看到一次就按一下「＋」。按錯了可以按「−」改回來。</p><div class="tw"><table class="cntt"><thead><tr><th scope="col">行為</th><th scope="col">算一次的情況</th><th scope="col">這一輪的次數</th></tr></thead><tbody><tr><th scope="row">追問</th><td>問「可以講一次嗎」「那後來呢」，向受訪者要例子或要過程</td><td class="cc"><div class="cnt" data-k="o1"></div></td></tr><tr><th scope="row">摘要回應</th><td>把受訪者剛說的話濃縮說回去，確認自己有沒有聽對</td><td class="cc"><div class="cnt" data-k="o2"></div></td></tr><tr><th scope="row">等待</th><td>問完之後安靜等三秒以上，沒有急著補話或換題</td><td class="cc"><div class="cnt" data-k="o3"></div></td></tr><tr><th scope="row">封閉式提問</th><td>問「會不會」「有沒有」，一句是或不是就答完</td><td class="cc"><div class="cnt" data-k="o4"></div></td></tr><tr><th scope="row">雙重提問</th><td>一句話裡問了兩件事</td><td class="cc"><div class="cnt" data-k="o5"></div></td></tr></tbody></table></div><p class="note">次數只是討論的起點。追問很多也未必問得深，要回頭看有沒有問出新的東西。</p><h3 id="s20" class="h2">（二）觀察紀錄表</h3><p class="fh">一列一件事<span class="fhint">事實欄只寫錄得下來的東西，像是原話、笑了、停了五秒。推測放到最右欄。</span></p><div class="rep" data-k="rep5" data-cols="4" data-start="6"><div class="tw"><table class="rtb"><thead><tr><th scope="col">時間點（第幾分鐘或第幾題）</th><th scope="col">六階段的哪一段</th><th scope="col">我看到聽到的事實</th><th scope="col">我的疑問或推測</th><th class="rmh"></th></tr></thead><tbody></tbody></table></div><button type="button" class="addr">＋ 再加一列</button></div><h3 id="s21" class="h2">（三）抽狀況卡的時機與紀錄</h3><ul class="lst"><li>訪談進行約兩分鐘後再抽，讓訪談者先找到節奏。</li><li>等訪談者問完一題、受訪者答完一段的自然停頓再亮卡，不打斷正在說話的人。</li><li>一輪抽一張，最多兩張。</li><li>亮卡時不出聲，卡面只給受訪者看。</li></ul><p>抽卡的按鈕在 <a class="inl" href="#s5">第五節</a>。抽完按「記到我的抽卡紀錄」，這裡會自動新增一列。</p><div class="rep" data-k="rep6" data-cols="4" data-start="2"><div class="tw"><table class="rtb"><thead><tr><th scope="col">抽到哪一張</th><th scope="col">抽卡的時機（第幾分鐘、第幾題）</th><th scope="col">訪談者怎麼接（寫原話）</th><th scope="col">我看到的效果</th><th class="rmh"></th></tr></thead><tbody></tbody></table></div><button type="button" class="addr">＋ 再加一列</button></div><h3 id="s22" class="h2">（四）訪談後的回饋</h3><p>第六節評量表裡的「互評」，由記錄者依觀察紀錄口頭告訴訪談者，訪談者再填進自己的評量表。</p><div class="fld"><p class="fh">我要回饋給訪談者的三件事<span class="fhint">先說一件看到的事實，再說一件看到但不確定的事，最後給一個下一輪可以試的具體做法</span></p><textarea class="fin" data-k="f60" rows="4" placeholder="在這裡寫…"></textarea></div><div class="fld chk"><p class="fh">交出紀錄前自我檢核：</p><ul class="cl"><li><label><input type="checkbox" data-k="c61"><span>事實欄沒有「很緊張」「不太好」這類判斷的詞</span></label></li><li><label><input type="checkbox" data-k="c62"><span>我的推測都放在推測欄</span></label></li><li><label><input type="checkbox" data-k="c63"><span>抽卡前有等自然的停頓，沒有打斷說話的人</span></label></li><li><label><input type="checkbox" data-k="c64"><span>整輪我沒有替訪談者回答或提示題目</span></label></li></ul></div>
+<h2 id="s5" class="h1">五、狀況卡的抽法與接法</h2><p>狀況卡模擬訪談中常見的三種情形。記錄者在適當時機抽一張，悄悄亮給受訪者看，訪談者看不到卡面。受訪者從下一個回答開始演出那個狀況，內容仍用自己的真實經驗。訪談者事前不知道卡面，要當場判斷怎麼接。</p><p class="fh">記錄者線上抽卡<span class="fhint">請把螢幕轉向受訪者再按</span></p><div class="cardwrap"><button type="button" id="draw" class="drawb">🎲 抽一張狀況卡</button><span class="drawout" id="drawout"></span><button type="button" id="logdraw" class="addr" hidden>＋ 記到我的抽卡紀錄</button><ul class="cards sit"><li class="card" data-i="0" style="--c:#B26D08"><p class="cno">①</p><p class="ct">受訪者答非所問</p><p class="cn">需拉回主題</p><p class="cl">可以怎麼接</p><ul><li>先承接再轉：「這點很有意思，我想先回到剛才那個……」</li><li>把問題縮小到一個具體場景：「那次考試前的那個晚上，你在做什麼？」</li><li>不要直接說「這不是我問的」——受訪者會開始猜你要什麼答案。</li></ul><label class="cdone"><input type="checkbox" data-k="k9"><span>我這輪接到這張</span></label></li><li class="card" data-i="1" style="--c:#2F6DB5"><p class="cno">②</p><p class="ct">受訪者回答過於簡略</p><p class="cn">需追問</p><p class="cl">可以怎麼接</p><ul><li>要例子不要定義：「可以講一次實際發生的嗎？」</li><li>要過程不要結論：「那後來呢？」「當下你做了什麼？」</li><li>沉默三秒也是追問——先不要急著換下一題。</li></ul><label class="cdone"><input type="checkbox" data-k="k10"><span>我這輪接到這張</span></label></li><li class="card" data-i="2" style="--c:#7048B0"><p class="cno">③</p><p class="ct">受訪者說個不停、欲罷不能</p><p class="cn">需巧妙結束引導入下一題</p><p class="cl">可以怎麼接</p><ul><li>抓一個他自己說過的詞當橋：「你剛提到『撐過去』，我想多問這個——」</li><li>用時間提示收束：「這部分我先記下來，我們時間還剩一半，我想確認另一件事。」</li><li>先摘要再轉題：摘要讓受訪者覺得被聽見，比硬轉題不傷關係。</li></ul><label class="cdone"><input type="checkbox" data-k="k11"><span>我這輪接到這張</span></label></li></ul></div><p class="fh">我接到的狀況與處理<span class="fhint">沒處理好也照實寫——失敗的紀錄才看得出下次要改什麼</span></p><div class="rep" data-k="rep3" data-cols="4" data-start="3"><div class="tw"><table class="rtb"><thead><tr><th scope="col">第幾輪</th><th scope="col">抽到哪一張</th><th scope="col">我當下說了什麼</th><th scope="col">有效嗎？下次會怎麼改</th><th class="rmh"></th></tr></thead><tbody></tbody></table></div><button type="button" class="addr">＋ 再加一列</button></div>
+<h2 id="s6" class="h1">六、六個階段的重點與評量</h2>
 <p>訪談進行分六個階段（原件內容）。先讀一遍，訪談後再用它檢查自己漏了哪一段。</p>
 <h3 id="s7" class="h2">（一）抵達</h3>
 <ul class="lst"><li class="lv1"><span class="">會面後的最初幾分鐘可能會深深影響研究者與受訪者之間關係的建立。受訪者一開始可能會感到不安、或甚至帶點敵意，研究者此時必須扮演客人的角色，且同時不露痕跡地展現自信及處之泰然的樣子，主動交談。</span></li><li class="lv1"><span class="">可避免提及研究主題，直到訪談正式開始。</span></li></ul>
@@ -283,20 +311,20 @@ table.rt tbody th{position:sticky;left:0;z-index:1;box-shadow:1px 0 0 var(--line
 <ul class="lst"><li class="lv1"><span class="">大約在訪談結束前的五到十分鐘，研究者可以示意訪談已經接近尾聲，讓受訪者逐漸回到日常生活的社交交談層次，在這時如「最後一個主題……」或「在最後的幾分鐘裡……」等用詞很實用。</span></li><li class="lv1"><span class="">在此階段，研究者必須確定受訪者沒有遺漏任何內容，如未表達完的感覺、或者還有很重要的議題沒提到。</span></li></ul>
 <h3 id="s12" class="h2">（六）訪談之後</h3>
 <ul class="lst"><li class="lv1"><span class="">錄音機關掉之後的發展也很重要，研究者熱忱地感謝受訪者，並簡短地說明受訪者對研究的貢獻，並開始協助受訪者離開訪談的狀態，同時應該再次重申保密性或者訪談資料的用途。</span></li><li class="lv1"><span class="">可以禮貌性詢問若逐字稿整理完備之後，若還有問題是否可以聯繫受訪者確認。</span></li><li class="lv1"><span class="">確認受訪者是否需要看過逐字稿，並約定時間寄送。</span></li><li class="lv1"><span class="">此階段也是回答受訪者在訪談當中所提出的問題的時機。</span></li><li class="lv1"><span class="">有時從訪談中離開會激發受訪者最後的思考，甚至提供新的資訊；如果內容重要，研究者可以打開錄音機請受訪者重述，也可以在訪談之後再做筆記。</span></li></ul>
-<p class="fh">評量表（線上版：每格點一下循環 v → △ → × → 空白）</p><p class="cap rk">做到打 v　部分做到打 △　未做到打 ×</p><div class="tw"><table class="rt"><thead><tr><th></th><th scope="col">（一）抵達</th><th scope="col">（二）介紹研究</th><th scope="col">（三）開始訪談</th><th scope="col">（四）訪談進行過程中</th><th scope="col">（五）結束訪談</th><th scope="col">（六）訪談之後</th></tr></thead><tbody><tr><th scope="row">自評</th><td class="rc"><button type="button" class="rb" data-k="r0_0" aria-label="自評／（一）抵達">·</button></td><td class="rc"><button type="button" class="rb" data-k="r0_1" aria-label="自評／（二）介紹研究">·</button></td><td class="rc"><button type="button" class="rb" data-k="r0_2" aria-label="自評／（三）開始訪談">·</button></td><td class="rc"><button type="button" class="rb" data-k="r0_3" aria-label="自評／（四）訪談進行過程中">·</button></td><td class="rc"><button type="button" class="rb" data-k="r0_4" aria-label="自評／（五）結束訪談">·</button></td><td class="rc"><button type="button" class="rb" data-k="r0_5" aria-label="自評／（六）訪談之後">·</button></td></tr><tr><th scope="row">互評（記錄者 A）</th><td class="rc"><button type="button" class="rb" data-k="r1_0" aria-label="互評（記錄者 A）／（一）抵達">·</button></td><td class="rc"><button type="button" class="rb" data-k="r1_1" aria-label="互評（記錄者 A）／（二）介紹研究">·</button></td><td class="rc"><button type="button" class="rb" data-k="r1_2" aria-label="互評（記錄者 A）／（三）開始訪談">·</button></td><td class="rc"><button type="button" class="rb" data-k="r1_3" aria-label="互評（記錄者 A）／（四）訪談進行過程中">·</button></td><td class="rc"><button type="button" class="rb" data-k="r1_4" aria-label="互評（記錄者 A）／（五）結束訪談">·</button></td><td class="rc"><button type="button" class="rb" data-k="r1_5" aria-label="互評（記錄者 A）／（六）訪談之後">·</button></td></tr><tr><th scope="row">互評（記錄者 B）</th><td class="rc"><button type="button" class="rb" data-k="r2_0" aria-label="互評（記錄者 B）／（一）抵達">·</button></td><td class="rc"><button type="button" class="rb" data-k="r2_1" aria-label="互評（記錄者 B）／（二）介紹研究">·</button></td><td class="rc"><button type="button" class="rb" data-k="r2_2" aria-label="互評（記錄者 B）／（三）開始訪談">·</button></td><td class="rc"><button type="button" class="rb" data-k="r2_3" aria-label="互評（記錄者 B）／（四）訪談進行過程中">·</button></td><td class="rc"><button type="button" class="rb" data-k="r2_4" aria-label="互評（記錄者 B）／（五）結束訪談">·</button></td><td class="rc"><button type="button" class="rb" data-k="r2_5" aria-label="互評（記錄者 B）／（六）訪談之後">·</button></td></tr><tr><th scope="row">受訪者回饋</th><td class="rc"><button type="button" class="rb" data-k="r3_0" aria-label="受訪者回饋／（一）抵達">·</button></td><td class="rc"><button type="button" class="rb" data-k="r3_1" aria-label="受訪者回饋／（二）介紹研究">·</button></td><td class="rc"><button type="button" class="rb" data-k="r3_2" aria-label="受訪者回饋／（三）開始訪談">·</button></td><td class="rc"><button type="button" class="rb" data-k="r3_3" aria-label="受訪者回饋／（四）訪談進行過程中">·</button></td><td class="rc"><button type="button" class="rb" data-k="r3_4" aria-label="受訪者回饋／（五）結束訪談">·</button></td><td class="rc"><button type="button" class="rb" data-k="r3_5" aria-label="受訪者回饋／（六）訪談之後">·</button></td></tr></tbody></table></div>
+<p class="fh">評量表（線上版：每格點一下循環 v → △ → × → 空白）</p><p class="cap rk">做到打 v　部分做到打 △　未做到打 ×</p><div class="tw"><table class="rt"><thead><tr><th></th><th scope="col">（一）抵達</th><th scope="col">（二）介紹研究</th><th scope="col">（三）開始訪談</th><th scope="col">（四）訪談進行過程中</th><th scope="col">（五）結束訪談</th><th scope="col">（六）訪談之後</th></tr></thead><tbody><tr><th scope="row">自評</th><td class="rc"><button type="button" class="rb" data-k="r0_0" aria-label="自評／（一）抵達">·</button></td><td class="rc"><button type="button" class="rb" data-k="r0_1" aria-label="自評／（二）介紹研究">·</button></td><td class="rc"><button type="button" class="rb" data-k="r0_2" aria-label="自評／（三）開始訪談">·</button></td><td class="rc"><button type="button" class="rb" data-k="r0_3" aria-label="自評／（四）訪談進行過程中">·</button></td><td class="rc"><button type="button" class="rb" data-k="r0_4" aria-label="自評／（五）結束訪談">·</button></td><td class="rc"><button type="button" class="rb" data-k="r0_5" aria-label="自評／（六）訪談之後">·</button></td></tr><tr><th scope="row">互評（記錄者）</th><td class="rc"><button type="button" class="rb" data-k="r1_0" aria-label="互評（記錄者）／（一）抵達">·</button></td><td class="rc"><button type="button" class="rb" data-k="r1_1" aria-label="互評（記錄者）／（二）介紹研究">·</button></td><td class="rc"><button type="button" class="rb" data-k="r1_2" aria-label="互評（記錄者）／（三）開始訪談">·</button></td><td class="rc"><button type="button" class="rb" data-k="r1_3" aria-label="互評（記錄者）／（四）訪談進行過程中">·</button></td><td class="rc"><button type="button" class="rb" data-k="r1_4" aria-label="互評（記錄者）／（五）結束訪談">·</button></td><td class="rc"><button type="button" class="rb" data-k="r1_5" aria-label="互評（記錄者）／（六）訪談之後">·</button></td></tr><tr><th scope="row">受訪者回饋</th><td class="rc"><button type="button" class="rb" data-k="r3_0" aria-label="受訪者回饋／（一）抵達">·</button></td><td class="rc"><button type="button" class="rb" data-k="r3_1" aria-label="受訪者回饋／（二）介紹研究">·</button></td><td class="rc"><button type="button" class="rb" data-k="r3_2" aria-label="受訪者回饋／（三）開始訪談">·</button></td><td class="rc"><button type="button" class="rb" data-k="r3_3" aria-label="受訪者回饋／（四）訪談進行過程中">·</button></td><td class="rc"><button type="button" class="rb" data-k="r3_4" aria-label="受訪者回饋／（五）結束訪談">·</button></td><td class="rc"><button type="button" class="rb" data-k="r3_5" aria-label="受訪者回饋／（六）訪談之後">·</button></td></tr></tbody></table></div>
 <div class="fld"><p class="fh">被打 △ 或 × 的那一格，實際發生了什麼事<span class="fhint">寫事實，不要寫「做得不夠好」</span></p><textarea class="fin" data-k="f36" rows="3" placeholder="在這裡寫…"></textarea></div>
 <div class="fld"><p class="fh">三輪下來，我重複犯的是哪一個毛病<span class="fhint">一輪看不出來，三輪才看得出模式——這一格是今天最重要的一格</span></p><textarea class="fin" data-k="f37" rows="2" placeholder="在這裡寫…"></textarea></div>
-<h2 id="s13" class="h1">六、訪談結束當天（原件三、）</h2>
+<h2 id="s13" class="h1">七、訪談結束當天（原件三、）</h2>
 <p class="note">訪談結束當天儘量寫下訪談時的感覺、觀察和彙整理資料，並準備後續訪談資料。</p>
 <div class="fld"><p class="fh">當下的感覺<span class="fhint">包括不舒服、尷尬、想趕快結束的那些時刻——這些在正式訪談會再出現一次</span></p><textarea class="fin" data-k="f38" rows="3" placeholder="在這裡寫…"></textarea></div>
 <div class="fld"><p class="fh">觀察到但錄音錄不到的事<span class="fhint">表情、停頓、環境、他不想談哪個話題</span></p><textarea class="fin" data-k="f39" rows="3" placeholder="在這裡寫…"></textarea></div>
 <div class="fld"><p class="fh">如果明天要再訪同一個人，我會改哪一件事</p><textarea class="fin" data-k="f40" rows="2" placeholder="在這裡寫…"></textarea></div>
-<h2 id="s14" class="h1">七、接到 W11 的個人作業</h2>
+<h2 id="s14" class="h1">八、接到 W11 的個人作業</h2>
 <p>W4 的個人作業要完成一次真正的訪談與觀察（W11 前完成）。今天練到的東西直接用得上：</p>
-<div class="fld chk"><ul class="cl"><li><label><input type="checkbox" data-k="c41"><span>把這份學習單留著<i>正式訪談前一天再看一次第五節的評量表與第六節的反思</i></span></label></li><li><label><input type="checkbox" data-k="c42"><span>訪談大綱初稿要先給老師看<i>課綱規定；大綱是約訪之前的事，別等到約好時間才擬</i></span></label></li><li><label><input type="checkbox" data-k="c43"><span>知情同意書須含 AI 轉錄勾選項<i>詳課綱「注意事項」之訪談資料特別條款</i></span></label></li><li><label><input type="checkbox" data-k="c44"><span>音檔以 AI 協助轉逐字稿後必須校對<i>轉錄會錯字、會漏句、會把兩個人講的話併在一起</i></span></label></li><li><label><input type="checkbox" data-k="c45"><span>觀察記錄整理成觀察札記<i>與逐字稿一起繳</i></span></label></li></ul></div>
+<div class="fld chk"><ul class="cl"><li><label><input type="checkbox" data-k="c41"><span>把這份學習單留著<i>正式訪談前一天再看一次第六節的評量表與第七節的反思</i></span></label></li><li><label><input type="checkbox" data-k="c42"><span>訪談大綱初稿要先給老師看<i>課綱規定；大綱是約訪之前的事，別等到約好時間才擬</i></span></label></li><li><label><input type="checkbox" data-k="c43"><span>知情同意書須含 AI 轉錄勾選項<i>詳課綱「注意事項」之訪談資料特別條款</i></span></label></li><li><label><input type="checkbox" data-k="c44"><span>音檔以 AI 協助轉逐字稿後必須校對<i>轉錄會錯字、會漏句、會把兩個人講的話併在一起</i></span></label></li><li><label><input type="checkbox" data-k="c45"><span>觀察記錄整理成觀察札記<i>與逐字稿一起繳</i></span></label></li></ul></div>
 <p class="pl">約訪之前先把 <a class="inl" href="prep.html">《115-1 訪談的準備》</a> 走一遍：填一次基本資料，邀請信、確認信、提醒信會自動代入，不必自己改署名。</p>
 <div class="warn"><p class="wh">⚠ 正式訪談的資料紅線</p><p>正式作業的訪談另有規定：原始可識別資料（未去識別化的音檔、逐字稿、姓名與校名）不得上傳外部 AI 或雲端轉錄服務。</p><p>同意書須含 AI 轉錄勾選項；去識別化 ≠ 不可辨識——獨特的身分組合仍可能被反推。</p></div>
-<h2 id="s15" class="h1">八、怎麼寫訪談大綱（最多 10 題）</h2>
+<h2 id="s15" class="h1">九、怎麼寫訪談大綱（最多 10 題）</h2>
 <p>上限 10 題不是為了省事。一場 60 分鐘的半結構訪談，真正問得完的核心題大約 5–6 題——因為每一題後面都要追問兩三次，而追問才是資料。題目開到 20 題，結果一定是每題都只問到表面，或是照念到第 12 題就沒時間了。</p>
 <div class="tw"><table><colgroup><col style="width:14.5%"><col style="width:39.5%"><col style="width:46.1%"></colgroup><thead><tr><th scope="col">結構</th><th scope="col">怎麼寫</th><th scope="col">為什麼</th></tr></thead><tbody><tr><td>暖身　1–2 題</td><td>具體、好答、不涉及評價。例如「可以先講一下你現在的工作嗎？」</td><td>作用是讓受訪者習慣『我講、你聽』的節奏，不是蒐集資料。</td></tr><tr><td>核心　5–6 題</td><td>一題一個主題，照經驗發生的順序排，不要照你的理論架構排。</td><td>受訪者是按時間記事的；照架構跳著問，他會一直要重新定位自己。</td></tr><tr><td>收尾　1–2 題</td><td>回顧與補遺：「還有什麼我沒問到、但你覺得重要的？」</td><td>這一題常常問出整場最有用的東西——因為那是他想講而你沒想到的。</td></tr></tbody></table></div>
 <h3 id="s16" class="h2">四個最常見的毛病</h3>
@@ -418,18 +446,92 @@ table.rt tbody th{position:sticky;left:0;z-index:1;box-shadow:1px 0 0 var(--line
     var saved=DB[k];
     if(saved&&saved.length){saved.forEach(function(r){addRow(r)})}
     else{for(var i=0;i<(+rep.getAttribute('data-start')||3);i++)addRow(null)}
+    rep.__add=function(vals){
+      var target=null;
+      for(var i=0;i<tb.rows.length&&!target;i++){
+        var has=[].some.call(tb.rows[i].querySelectorAll('textarea'),function(x){return x.value});
+        if(!has)target=tb.rows[i];
+      }
+      if(!target)target=addRow(null);
+      var xs=target.querySelectorAll('textarea');
+      vals.forEach(function(v,c){if(xs[c]){xs[c].value=v;grow(xs[c])}});
+      collect();return target;
+    };
     rep.querySelector('.addr').onclick=function(){var tr=addRow(null);var f=tr.querySelector('textarea');if(f)f.focus()};
   });
-  // 抽狀況卡
-  var draw=document.getElementById('draw');
+  // 抽狀況卡（記錄者用）
+  var draw=document.getElementById('draw'), logb=document.getElementById('logdraw'), lastI=-1, curName='';
   if(draw){draw.onclick=function(){
-    var cs=[].slice.call(document.querySelectorAll('.card'));if(!cs.length)return;
+    var cs=[].slice.call(document.querySelectorAll('.sit .card'));if(!cs.length)return;
     var i=Math.floor(Math.random()*cs.length);
+    if(cs.length>1&&i===lastI)i=(i+1+Math.floor(Math.random()*(cs.length-1)))%cs.length;
+    lastI=i;
     cs.forEach(function(c,j){c.classList.toggle('hit',j===i)});
+    curName=cs[i].querySelector('.cno').textContent+' '+cs[i].querySelector('.ct').textContent;
     var out=document.getElementById('drawout');
-    if(out)out.textContent='抽到 '+cs[i].querySelector('.cno').textContent+'　'+cs[i].querySelector('.ct').textContent;
+    if(out)out.textContent='抽到 '+curName;
+    if(logb){logb.hidden=false;logb.textContent='＋ 記到我的抽卡紀錄'}
     cs[i].scrollIntoView({block:'nearest',behavior:'smooth'});
   }}
+  if(logb){logb.onclick=function(){
+    var rep=document.querySelector('.rep[data-k="rep6"]');
+    if(!rep||!rep.__add||!curName)return;
+    rep.__add([curName]);
+    logb.textContent='已記入（在第四節（三））';
+    setTimeout(function(){logb.textContent='＋ 記到我的抽卡紀錄'},2200);
+  }}
+
+  // ===== W4-2（2026-09-29）三人一組：輪替表、角色選擇、計次 =====
+  var LET={a:'A',b:'B',c:'C'}, ROT={1:['a','b','c'],2:['b','c','a'],3:['c','a','b']},
+      RN={1:'第一輪',2:'第二輪',3:'第三輪'}, ROLES=['訪談者','受訪者','記錄者'];
+  function nmOf(p){var v=DB['n_'+p];return v?'（'+v+'）':''}
+  function paintRot(){
+    var me=DB.me, r=+DB.rnd||0;
+    [].forEach.call(document.querySelectorAll('#rot tbody tr'),function(tr){
+      var rr=+tr.getAttribute('data-r');
+      [].forEach.call(tr.querySelectorAll('td'),function(td){
+        var p=td.getAttribute('data-p');
+        td.textContent=LET[p]+nmOf(p);
+        td.classList.toggle('mine',me===p);
+        td.classList.toggle('me',me===p&&r===rr);
+      });
+    });
+    [].forEach.call(document.querySelectorAll('.roles .card'),function(c){c.classList.remove('hit')});
+    var out=document.getElementById('myrole');if(!out)return;
+    if(!me||!r){out.textContent='選好「我是誰」和「現在第幾輪」，這裡會告訴你這一輪的角色。';return}
+    var idx=ROT[r].indexOf(me), o=ROT[r];
+    out.textContent='你是組員 '+LET[me]+nmOf(me)+'，'+RN[r]+'擔任「'+ROLES[idx]+'」。這一輪的訪談者是 '+LET[o[0]]+nmOf(o[0])+
+      '，受訪者是 '+LET[o[1]]+nmOf(o[1])+'，記錄者是 '+LET[o[2]]+nmOf(o[2])+'。';
+    var card=document.querySelector('.roles .card[data-role="'+ROLES[idx]+'"]');if(card)card.classList.add('hit');
+  }
+  [].forEach.call(document.querySelectorAll('input.nin'),function(el){
+    var k=el.getAttribute('data-k');if(DB[k])el.value=DB[k];
+    el.addEventListener('input',function(){var v=el.value.trim();if(v){DB[k]=v}else{delete DB[k]}save();paintRot()});
+  });
+  function paintSeg(seg){
+    var k=seg.getAttribute('data-k');
+    [].forEach.call(seg.querySelectorAll('button'),function(b){
+      b.setAttribute('aria-pressed',String(String(DB[k]||'')===b.getAttribute('data-v')))});
+  }
+  [].forEach.call(document.querySelectorAll('.seg'),function(seg){
+    var k=seg.getAttribute('data-k');paintSeg(seg);
+    [].forEach.call(seg.querySelectorAll('button'),function(b){b.onclick=function(){
+      var v=b.getAttribute('data-v');
+      if(String(DB[k]||'')===v){delete DB[k]}else{DB[k]=v}
+      paintSeg(seg);paintRot();save()}});
+  });
+  function paintCnt(box){
+    var k=box.getAttribute('data-k');
+    box.querySelector('output').textContent=DB[k]||0;
+  }
+  [].forEach.call(document.querySelectorAll('.cnt'),function(box){
+    box.innerHTML='<button type="button" data-d="-1" aria-label="減一">−</button><output aria-live="polite">0</output><button type="button" data-d="1" aria-label="加一">＋</button>';
+    var k=box.getAttribute('data-k');paintCnt(box);
+    [].forEach.call(box.querySelectorAll('button'),function(b){b.onclick=function(){
+      var n=Math.max(0,(DB[k]||0)+(+b.getAttribute('data-d')));
+      if(n){DB[k]=n}else{delete DB[k]}paintCnt(box);save()}});
+  });
+  paintRot();
   // 清除
   var clr=document.getElementById('clearall');
   if(clr)clr.onclick=function(){
@@ -438,6 +540,10 @@ table.rt tbody th{position:sticky;left:0;z-index:1;box-shadow:1px 0 0 var(--line
     [].forEach.call(document.querySelectorAll('textarea'),function(x){x.value='';grow(x)});
     [].forEach.call(document.querySelectorAll('input[type=checkbox][data-k]'),function(x){x.checked=false});
     [].forEach.call(document.querySelectorAll('.rb'),function(b){b.textContent='·';b.removeAttribute('data-v')});
+    [].forEach.call(document.querySelectorAll('input.nin'),function(x){x.value=''});
+    [].forEach.call(document.querySelectorAll('.seg'),paintSeg);
+    [].forEach.call(document.querySelectorAll('.cnt'),paintCnt);
+    paintRot();
     if(stat)stat.textContent='已清除';
   };
   // 字型載入後行高會變，重算一次高度；列印前也重算
